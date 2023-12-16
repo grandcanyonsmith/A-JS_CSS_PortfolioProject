@@ -4,117 +4,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Draggable and Resizable Square</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #playground {
+            width: 100vw;
+            height: 100vh;
+            overflow: scroll;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        #square {
+            width: 100px;
+            height: 100px;
+            background-color: #555;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        #resizer {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border: 2px solid #000;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize;
+        }
+    </style>
 </head>
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-                <div class="image">
-                    <img src="https://media.licdn.com/dms/image/D5603AQEzeXLP_9sw4g/profile-displayphoto-shrink_800_800/0/1678431818623?e=2147483647&v=beta&t=ZESvhyFNjXJXgTbCTuqf9XWbJ01ZEgL9wTMu6NETuXM" alt="">
-                </div>
-            </div>
-            <div class="right-header">
-                <h1 class="name">
-                    Hi, I'm <span>Canyon Smith.</span>
-                    A Software Developer.
-                </h1>
-                <p>
-                    I specialize in Python, AWS, and AI with a strong background in sales automation operations. I have been in the software development industry for 6 years. Currently, I am working at OC Tanner and I am not available for contract work. I am passionate about problem-solving and creativity.
-                </p>
-                <div class="btn-con">
-                    <a href="" class="main-btn">
-                        <span class="btn-text">Download CV</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
-                    </a>
-                </div>
-            </div>
+<body>
+    <div id="playground" onmousedown="initDrag(event)">
+        <div id="square">
+            <div id="resizer" onmousedown="initResize(event)"></div>
         </div>
-    </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4>Information About me</h4>
-                    <p>
-                        I am a software developer with 6 years of experience, specializing in Python, AWS, and AI. I have a strong background in sales automation operations. Currently, I am working at OC Tanner and I am not available for contract work. I am passionate about problem-solving and creativity.
-                    </p>
-                    <div class="btn-con">
-                        <a href="#" class="main-btn">
-                            <span class="btn-text">Download CV</span>
-                            <span class="btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">650+</p>
-                            <p class="small-text">Projects <br /> Completed</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">6</p>
-                            <p class="small-text">Years of <br /> experience</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">300+</p>
-                            <p class="small-text">Happy <br /> Clients</p>
-                        </div>
-                    </div>
-                    <div class="about-item">
-                        <div class="abt-text">
-                            <p class="large-text">400+</p>
-                            <p class="small-text">Customer <br /> reviews</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">Python</p>
-                        <div class="progress-con">
-                            <p class="prog-text">90%</p>
-                            <div class="progress">
-                                <span class="python"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">AWS</p>
-                        <div class="progress-con">
-                            <p class="prog-text">85%</p>
-                            <div class="progress">
-                                <span class="aws"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">AI</p>
-                        <div class="progress-con">
-                            <p class="prog-text">80%</p>
-                            <div class="progress">
-                                <span class="ai"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
+
+    <script>
+        var square = document.getElementById('square'),
+            resizer = document.getElementById('resizer'),
+            currentResizer,
+            startX, startY, startWidth, startHeight;
+
+        function initDrag(e) {
+            // Get the mouse cursor position at startup
+            startX = e.clientX;
+            startY = e.clientY;
+            document.addEventListener('mousemove', doDrag, false);
+            document.addEventListener('mouseup', stopDrag, false);
+        }
+
+        function doDrag(e) {
+            e.preventDefault();
+            // Calculate the new cursor position
+            var posX = e.clientX - startX,
+                posY = e.clientY - startY;
+            // Set the element's new position
+            square.style.left = (square.offsetLeft + posX) + 'px';
+            square.style.top = (square.offsetTop + posY) + 'px';
+            // Update the position for the next time
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+
+        function stopDrag() {
+            document.removeEventListener('mousemove', doDrag, false);
+            document.removeEventListener('mouseup', stopDrag, false);
+        }
+
+        function initResize(e) {
+            e.stopPropagation();
+            currentResizer = e.target;
+            startX = e.clientX;
+            startY = e.clientY;
+            startWidth = parseInt(document.defaultView.getComputedStyle(square).width, 10);
+            startHeight = parseInt(document.defaultView.getComputedStyle(square).height, 10);
+            document.addEventListener('mousemove', doResize, false);
+            document.addEventListener('mouseup', stopResize, false);
+        }
+
+        function doResize(e) {
+            if (currentResizer) {
+                var width = startWidth + e.clientX - startX,
+                    height = startHeight + e.clientY - startY;
+                square.style.width = width + 'px';
+                square.style.height = height + 'px';
+            }
+        }
+
+        function stopResize() {
+            document.removeEventListener('mousemove', doResize, false);
+            document.removeEventListener('mouseup', stopResize, false);
+        }
+    </script>
 </body>
 </html>
